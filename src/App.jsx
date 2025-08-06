@@ -5,7 +5,8 @@ import CountryDisplay from '../components/CountryDisplay'
 const App = () => {
   const [countries, setCountries] = useState([])
   const [filter, setFilter] = useState('')
-
+  const [selectedCountry, setSelectedCountry] = useState(null)
+  
   useEffect(() => {
     axios.get('https://restcountries.com/v3.1/all?fields=name,capital,area,languages,flags')
       .then(response => setCountries(response.data))
@@ -20,7 +21,7 @@ const App = () => {
       <div>
         find countries <input value={filter} onChange={(e) => setFilter(e.target.value)} />
       </div>
-      <CountryDisplay countries={filtered}  filter={filter}/>
+      <CountryDisplay countries={filtered} filter={filter} />
     </div>
   )
 }
